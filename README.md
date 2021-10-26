@@ -29,3 +29,4 @@ Wires: <br />
   &nbsp;&nbsp;White for 5V from the Arduino board to the shared 5V line <br />
   &nbsp;&nbsp;Resistor for Ground from shared line to LED <br />
   &nbsp;&nbsp;Red, Green and Blue for each color's digital signal from the Arduino board <br />
+Video: https://youtu.be/9URFQEj5kL4
