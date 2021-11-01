@@ -30,3 +30,13 @@ Wires: <br />
   &nbsp;&nbsp;Resistor for Ground from shared line to LED <br />
   &nbsp;&nbsp;Red, Green and Blue for each color's digital signal from the Arduino board <br />
 Video: https://youtu.be/9URFQEj5kL4
+
+<h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Homework #2:
+ <h3> General description: Building the traffic lights for a crosswalk. You will use 2 LEDs to represent the traffic lights for people (red and green) and 3 LEDs to represent the traffic lights for cars (red, yellow and green). <br />
+   State 1: Green for cars, red for people; <br />
+   State 2: Yellow for cars, red for people; <br />
+   State 3: Red for cars, green for people, with a beeping sound; <br />
+   State 4: Red for cars, blinking green for people, with a faster beeping sound. <br />
+   <h3> Components: 5 LEDs, 1 button, 1 buzzer, resistors and wires (per logic) <br />
+ <img src ="https://user-images.githubusercontent.com/62668963/139726699-07088017-1d5e-4a69-b175-6c5b8803487b.jpg" width = "1000"> <br />
+Video: https://youtu.be/663OU5WOw48
