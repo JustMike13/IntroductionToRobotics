@@ -2,7 +2,7 @@
 // aaronalai1@gmail.com
 // contains code for averaging sensor data
 
-#define sample 300                    //this is how many samples the device takes per reading
+#define sample 2000                    //this is how many samples the device takes per reading
                                                         //more information for #define http://arduino.cc/en/Reference/Define
 int inPin = 5;                                  //analog 5
 float val;                                         //where to store info from analog 5
@@ -82,8 +82,11 @@ val = constrain(val, 0, 100);               //this constrains the variable value
     val = map(val, 0, 100, 0, 9);
     toneVal = val * 100;
     displayNumber(val, dpState);
+    if(val = 0){
+      noTone(buzzerPin);
+    }
     tone(buzzerPin, toneVal);
     averaging = 0;                                 //this line of code sets averaging back to zero so it can be used again
-
+    //delay(300);
 
 }
