@@ -43,6 +43,6 @@ Video: https://youtu.be/663OU5WOw48
      
 <h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Homework #3:
  <h3> EMF - electromagnetic field - detector <br />
-   <h3> Components: a buzzer and a 7-segment displa <br />
+   <h3> Components: a buzzer and a 7-segment display <br />
  <img src ="https://user-images.githubusercontent.com/62668963/141011668-2b41c509-15ee-4e9c-b871-514076a157f5.jpg" width = "1000"> <br />
 Video: https://youtu.be/DZkfIs08FbY
