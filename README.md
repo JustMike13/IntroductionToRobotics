@@ -40,3 +40,9 @@ Video: https://youtu.be/9URFQEj5kL4
    <h3> Components: 5 LEDs, 1 button, 1 buzzer, resistors and wires (per logic) <br />
  <img src ="https://user-images.githubusercontent.com/62668963/139726699-07088017-1d5e-4a69-b175-6c5b8803487b.jpg" width = "1000"> <br />
 Video: https://youtu.be/663OU5WOw48
+     
+<h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Homework #3:
+ <h3> EMF - electromagnetic field - detector <br />
+   <h3> Components: a buzzer and a 7-segment displa <br />
+ <img src ="https://user-images.githubusercontent.com/62668963/141011668-2b41c509-15ee-4e9c-b871-514076a157f5.jpg" width = "1000"> <br />
+Video: https://youtu.be/DZkfIs08FbY
