@@ -48,29 +48,32 @@ void setup() {
 }
 
 void loop() {
-  writeNumber(0);
+  writeNumber(567);
   
 }
 
-void writeNumber( int number){
-  int currentNumber = number;
+void writeNumber( long number){
+  long currentNumber = number;
+  //while(currentNumber > 9999){
+    //currentNumber /= 10;
+  //}
   int displayDigit = 0;
   int lastDigit;
-  if(currentNumber == 0){
+  
+  while(currentNumber != 0 && displayDigit < displayCount){
     lastDigit = currentNumber % 10;
     showDigit(displayDigit);
     writeReg(digitArray[lastDigit]);
     displayDigit ++;
-    currentNumber /= 10;
+    currentNumber = currentNumber/ 10;
     delay(5);
   }
-  while(currentNumber != 0){
-    lastDigit = currentNumber % 10;
+  while(displayDigit < displayCount){
     showDigit(displayDigit);
     writeReg(digitArray[0]);
     displayDigit ++;
-    currentNumber /= 10;
     delay(5);
+    
   }
 }
 
