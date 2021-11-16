@@ -7,6 +7,7 @@ const int clockPin = 10; // SHCP
 const int pinSW = 9;
 const int pinX = A0;
 const int pinY = A1;
+//joystick values
 bool switchState = LOW;
 int xValue = 0;
 int yValue = 0;
@@ -15,6 +16,12 @@ int maxThreshold = 700;
 bool joyMovedX = false;
 bool joyMovedY = false;
 bool lastSwitchState = LOW;
+
+//display pins
+const int segD1 = 7;
+const int segD2 = 6;
+const int segD3 = 5;
+const int segD4 = 4;
 
 //display values
 int digits[4] = {0, 0, 0, 0}; // cifrele de afisat pe display, in ordine inversa
@@ -25,21 +32,18 @@ long lastDpTime = 0;
 int dpDelay = 300;
 int minDigit = 0;
 int maxDigit = 9;
-// eeprom variables
-bool wasRead = 0;
-int writeDelay = 500;
-long lastEEPROMWrite = 0;
-//display pins
-const int segD1 = 7;
-const int segD2 = 6;
-const int segD3 = 5;
-const int segD4 = 4;
-
 const int displayCount = 4;
 
 const int displayDigits[] = {
   segD1, segD2, segD3, segD4
 };
+
+// eeprom variables
+bool wasRead = 0;
+int writeDelay = 1000;
+long lastEEPROMWrite = 0;
+
+
 
 bool registers[8];
 
@@ -81,6 +85,7 @@ void setup() {
 void loop() {
   if(!wasRead){
     readEEPROM();
+    wasRead = 1;
   }
   
   xValue = analogRead(pinX);
@@ -138,6 +143,7 @@ void loop() {
   writeDigits();
   if(millis() - lastEEPROMWrite > writeDelay){
     writeEEPROM();
+    lastEEPROMWrite = millis();
   }
 }
 
