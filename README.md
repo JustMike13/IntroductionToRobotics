@@ -44,3 +44,11 @@ Video: https://youtu.be/663OU5WOw48
    <h3> Components: a buzzer and a 7-segment display <br />
  <img src ="https://user-images.githubusercontent.com/62668963/141011668-2b41c509-15ee-4e9c-b871-514076a157f5.jpg" width = "1000"> <br />
 Video: https://youtu.be/DZkfIs08FbY
+     
+<h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Homework #4:
+ <h3> &nbsp;&nbsp;&nbsp;4 Digit 7-Segment Display controlled by a joystick <br /> <br />
+   First state: you can use a joystick axis to cycle through the 4 digits. A blinking decimal point shows the current digit position. When pressing the button, you lock in on the selected digit and enter the second state. In this state, the decimal point stays always on, no longer blinking and you can no longer use the axis to cycle through the 4 digits. Instead, using the other axis, you can increment on decrement the number on the current digit. Pressing the button again returns you to the previous state. <br />
+   I have also used EEPROM to save the value shown on the display when the Arduino is powered off. <br />
+   <h3> Components: a joystick, a 4 digit 7-segment display, a 74hc595 shiftregister <br />
+ <img src ="https://user-images.githubusercontent.com/62668963/142036464-74d80520-29a9-4498-8830-20b85cb87d63.jpg" width = "1000"> <br />
+Video: https://youtu.be/Pw7ji6FYj70
