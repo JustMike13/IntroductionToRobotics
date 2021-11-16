@@ -1,3 +1,4 @@
+#include <EEPROM.h>
 //shift register pins
 const int dataPin = 12; // DS
 const int latchPin =  11; // STCP
@@ -24,6 +25,10 @@ long lastDpTime = 0;
 int dpDelay = 300;
 int minDigit = 0;
 int maxDigit = 9;
+// eeprom variables
+bool wasRead = 0;
+int writeDelay = 500;
+long lastEEPROMWrite = 0;
 //display pins
 const int segD1 = 7;
 const int segD2 = 6;
@@ -74,6 +79,10 @@ void setup() {
 }
 
 void loop() {
+  if(!wasRead){
+    readEEPROM();
+  }
+  
   xValue = analogRead(pinX);
   yValue = analogRead(pinY);
   switchState = digitalRead(pinSW);
@@ -125,47 +134,14 @@ void loop() {
       joyMovedX = false;
     }
   }
-  //
+  //delay(5);
   writeDigits();
-  
-//  printFunction();
-}
-
-//void writeNumber( long number){
-//  long currentNumber = number;
-//  //while(currentNumber > 9999){
-//    //currentNumber /= 10;
-//  //}
-//  int displayDigit = 0;
-//  int lastDigit;
-//  
-//  while(currentNumber != 0 && displayDigit < displayCount){
-//    lastDigit = currentNumber % 10;
-//    showDigit(displayDigit);
-//    writeReg(digitArray[lastDigit]);
-//    displayDigit ++;
-//    currentNumber = currentNumber/ 10;
-//    delay(5);
-//  }
-//  while(displayDigit < displayCount){
-//    showDigit(displayDigit);
-//    writeReg(digitArray[0]);
-//    displayDigit ++;
-//    delay(5);
-//    
-//  }
-//}
-
-void printFunction(){
-  for(int i = 3; i >= 0; i--){
-    Serial.print(i);
-    Serial.print(" ");
-    Serial.print(digitArray[digits[i]]);
-    Serial.print(" ");
-    Serial.print(points[i]);
-    Serial.println("");
+  if(millis() - lastEEPROMWrite > writeDelay){
+    writeEEPROM();
   }
 }
+
+
 
 void showDigit(int digit) {
   for (int i = 0; i< displayCount; i++){
@@ -185,5 +161,17 @@ void writeDigits(){
     showDigit(i);
     writeReg(digitArray[digits[i]], points[i]);
     delay(5);
+  }
+}
+
+void readEEPROM(){
+  for(int i = 0; i < displayCount; i++){
+    digits[i] = EEPROM.read(i);
+  }
+}
+
+void writeEEPROM(){
+  for(int i = 0; i < displayCount; i++){
+    EEPROM.write(i, digits[i]);
   }
 }
