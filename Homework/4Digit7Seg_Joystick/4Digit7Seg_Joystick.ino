@@ -4,9 +4,11 @@ const int dataPin = 12; // DS
 const int latchPin =  11; // STCP
 const int clockPin = 10; // SHCP
 //joystick pins
-const int pinSW = 9;
+const int pinSW = 2;
 const int pinX = A0;
 const int pinY = A1;
+long lastButtonPress = 0;
+const long buttonPressDelay = 200;
 //joystick values
 bool switchState = LOW;
 int xValue = 0;
@@ -67,6 +69,7 @@ int digitArray[16] = {
   B10001110  // F
 };
 
+
 void setup() {
   pinMode(dataPin, OUTPUT);
   pinMode(latchPin, OUTPUT);
@@ -79,9 +82,16 @@ void setup() {
     pinMode(displayDigits[i], OUTPUT);
     digitalWrite(displayDigits[i], LOW); 
   }
+  attachInterrupt(digitalPinToInterrupt(pinSW), button_ISR, RISING );
   Serial.begin(9600);
 }
 
+void button_ISR(){
+  if(millis() - lastButtonPress > buttonPressDelay){
+    state = !state;
+    lastButtonPress = millis();
+  }
+}
 void loop() {
   if(!wasRead){
     readEEPROM();
@@ -91,11 +101,11 @@ void loop() {
   xValue = analogRead(pinX);
   yValue = analogRead(pinY);
   switchState = digitalRead(pinSW);
-  
-  if(switchState == LOW && lastSwitchState == HIGH){
-    state = !state;
-  }
-  lastSwitchState = switchState;
+  Serial.println(switchState);
+//  if(switchState == LOW && lastSwitchState == HIGH){
+//    state = !state;
+//  }
+//  lastSwitchState = switchState;
   
   if (state == 0){
      if(yValue < minThreshold && joyMovedY == false){
